@@ -4,7 +4,7 @@ from scipy import stats
 
 samples_number = 1000
 time_horizon = 50
-variance = 2
+variance = 1
 
 list_H = []
 list_MSE = []
@@ -35,6 +35,15 @@ def linear_regress(x,y):
     best_fit_line = slope * np.array(x) + intercept
     return best_fit_line
 
+def chart_ploter(list_x, list_y, chart_label, x_label, y_label, chart_name):
+    plt.scatter(list_x, list_y, s = 1, label = chart_label)
+    plt.xlabel(x_label)
+    plt.ylabel(y_label)
+    plt.legend()
+    plt.savefig('./Charts_first_project/{}'.format(chart_name))
+    plt.clf()
+    print('Wykres {} wygenerowany.'.format(chart_name))
+
 def func_MSE_H(sin, samples_number, variance, time_horizon):
     sin_noise = sin_noise_generator(sin, samples_number, variance)
 
@@ -44,18 +53,12 @@ def func_MSE_H(sin, samples_number, variance, time_horizon):
         list_MSE.append(MSE)
         list_H.append(h)
 
-    print('Najmniejszy MSE: ', min(list_MSE), 'dla H: ', list_MSE.index(min(list_MSE))+1)
-    print('Horyzont czasowy ustawiony na: ', len(list_MSE))
-
-    plt.scatter(list_H,list_MSE,s=1 ,label='MSE(H)')
+    print("Najmniejszy MSE: {:.4f} dla H: {}".format(min(list_MSE), list_MSE.index(min(list_MSE))+1))
     plt.scatter(list_MSE.index(min(list_MSE))+1,min(list_MSE), s=6, color='red', label='Hopt')
-    plt.xlabel('H')
-    plt.ylabel('MSE')
-    plt.legend(loc='lower right')
-    plt.savefig('./Charts_first_project/MSE(H)')
-    plt.clf()
+    chart_ploter(list_H, list_MSE, 'MSE(H)', 'H', 'MSE', 'MSE(H)')
 
     list_MSE.clear()
+    list_H.clear()
 
 def func_MSE_VAR(sin, samples_number, variance, time_horizon):
     for v in np.arange(0.1, variance + 0.1, 0.02):
@@ -67,14 +70,8 @@ def func_MSE_VAR(sin, samples_number, variance, time_horizon):
         list_VAR.append(v)
 
     best_fit_line = linear_regress(list_VAR, list_MSE)
-    
-    plt.scatter(list_VAR, list_MSE, s=1, label='MSE(var z_k)')
     plt.plot(list_VAR, best_fit_line, color = 'green', label='reglin MSE(var z_k)')
-    plt.xlabel('var z_k')
-    plt.ylabel('MSE')
-    plt.legend()
-    plt.savefig('./Charts_first_project/MSE(var)')
-    plt.clf()
+    chart_ploter(list_VAR, list_MSE, 'MSE(var z_k)', 'var z_k', 'MSE', 'MSE(var)')
 
     list_MSE.clear()
     list_VAR.clear()
@@ -93,19 +90,13 @@ def func_Hopt_VAR(sin, samples_number, variance, time_horizon):
         list_VAR.append(v)
 
     best_fit_line = linear_regress(list_VAR,list_Hopt)
-
-    plt.scatter(list_VAR, list_Hopt, s=1, label='H_opt(var z_k)')
     plt.plot(list_VAR, best_fit_line, color='green', label='reglin H_opt(var z_k)')
-    plt.xlabel('var z_k')
-    plt.ylabel('H_opt')
-    plt.legend()
-    plt.savefig('./Charts_first_project/Hopt(var)')
-    plt.clf()
+    chart_ploter(list_VAR, list_Hopt, 'H_opt(var z_k)', 'var z_k', 'H_opt', 'Hopt(var)')
 
     list_MSE.clear()
     list_VAR.clear() 
     list_Hopt.clear()
 
 func_MSE_H(sin, samples_number, variance, time_horizon)
-func_MSE_VAR(sin,samples_number,variance,time_horizon)
+func_MSE_VAR(sin,samples_number, variance, time_horizon)
 func_Hopt_VAR(sin, samples_number, variance, time_horizon)
