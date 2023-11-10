@@ -40,7 +40,7 @@ def chart_ploter(list_x, list_y, chart_label, x_label, y_label, chart_name):
     plt.xlabel(x_label)
     plt.ylabel(y_label)
     plt.legend()
-    plt.savefig('./Charts_first_project/{}'.format(chart_name), transparent=True)
+    plt.savefig('./Charts_first_project/{}'.format(chart_name))
     plt.clf()
     print('Wykres {} wygenerowany.'.format(chart_name))
 
