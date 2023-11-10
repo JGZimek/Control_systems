@@ -22,4 +22,4 @@ Główne wyniki obserwacji z eksperymentu odtwarzania sygnału sinusoidalnego na
 2. MSE maleje wraz ze wzrostem liczby próbek sygnału zaszumionego (H), ale tylko do pewnej wartości optymalnej (Hopt), po której zaczyna rosnąć.
 3. Hopt zależy od wariancji szumu (VAR) i rośnie wraz z nią.
 4. Im większa VAR, tym większy MSE i tym trudniej odtworzyć sygnał oryginalny.
-5. W celu uzyskania najlepszych wyników należy dobierać H tak, aby było równe Hopt dla danego poziomu VAR.
+5. W celu uzyskania najlepszych wyników należy dobierać H tak, aby było równe Hopt dla danego poziomu VAR.  
