@@ -1,20 +1,19 @@
-# Sterowanie adaptacyjne
+# Sterowanie procesami ciągłymi
 ## Analiza błędu średnio-kwadratowego - Projekt I
 W projekcie przeprowadzono eksperyment, polegający na próbie odtworzenia sygnału z wygenerowanego wcześniej szumu o rozkładzie jednostkowym.
 Celem eksperymentu było zbadanie wpływu różnych czynników na jakość odtwarzanego sygnału, mierzoną za pomocą błędu średnio-kwadratowego (MSE). W szczególności, analizowano:
 
-### Zależność MSE od horyzontu czasowego (H)
-Z wykresu wynika, że MSE spada wraz ze wzrostem H. To sugeruje, że większa liczba próbek sygnału zaszumionego pozwala na lepszą rekonstrukcję sygnału oryginalnego. Jednak MSE nie spada do zera, lecz osiąga minimum dla pewnej wartości Hopt (H optymalne), po której zaczyna ponownie wzrastać. Hopt to horyzont czasowy, dla którego MSE jest najniższe.  
+1. **Zależność MSE od horyzontu czasowego (H)** - z wykresu wynika, że MSE spada wraz ze wzrostem H. To sugeruje, że większa liczba próbek sygnału zaszumionego pozwala na lepszą rekonstrukcję sygnału oryginalnego. Jednak MSE nie spada do zera, lecz osiąga minimum dla pewnej wartości Hopt (H optymalne), po której zaczyna ponownie wzrastać. Hopt to horyzont czasowy, dla którego MSE jest najniższe.  
 
-![Zależność MSE od horyzontu czasowego (H)](Charts_first_project/MSE(H).png)
-### Zależność MSE od wariancji szumu (VAR) 
-Zwiększenie wariancji szumu wpływa negatywnie na MSE, co widać na wykresie. Jest to spowodowane tym, że sygnał oryginalny jest bardziej zniekształcony przez szum i traci na jakości.  
+2. **Zależność MSE od wariancji szumu (VAR)** - zwiększenie wariancji szumu wpływa negatywnie na MSE, co widać na wykresie. Jest to spowodowane tym, że sygnał oryginalny jest bardziej zniekształcony przez szum i traci na jakości.  
 
-![Zależność MSE od wariancji szumu (VAR)](Charts_first_project/MSE(var).png)
-### Optymalizacje wartości H (Hopt) w zależności od wariancji szumu (VAR)
-Zgodnie z tym co da się zauważyć na wykresie, horyzont optymalny jest funkcją rosnącą VAR. To znaczy, że większa wariancja szumu wymaga większej liczby próbek sygnału zaszumionego do minimalizacji MSE.  
+3. **Optymalizacje wartości H (Hopt) w zależności od wariancji szumu (VAR)** - zgodnie z tym co da się zauważyć na wykresie, horyzont optymalny jest funkcją rosnącą VAR. To znaczy, że większa wariancja szumu wymaga większej liczby próbek sygnału zaszumionego do minimalizacji MSE.  
 
-![Optymalizacje wartości H (Hopt) w zależności od wariancji szumu (VAR)](Charts_first_project/Hopt(var).png)
+<p float="left">
+  <img src="Charts_first_project/MSE(H).png" width="32%" />
+  <img src="Charts_first_project/MSE(var).png" width="32%" /> 
+  <img src="Charts_first_project/Hopt(var).png" width="32%" />
+</p>
 
 ### Wnioski
 Główne wyniki obserwacji z eksperymentu odtwarzania sygnału sinusoidalnego na podstawie szumu o rozkładzie jednostkowym są następujące:
