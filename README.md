@@ -10,9 +10,9 @@ Celem eksperymentu było zbadanie wpływu różnych czynników na jakość odtwa
 3. **Optymalizacje wartości H (Hopt) w zależności od wariancji szumu (VAR)** - zgodnie z tym co da się zauważyć na wykresie, horyzont optymalny jest funkcją rosnącą VAR. To znaczy, że większa wariancja szumu wymaga większej liczby próbek sygnału zaszumionego do minimalizacji MSE.  
 
 <p float="left">
-  <img src="Charts_first_project/MSE(H).png" width="32%" />
-  <img src="Charts_first_project/MSE(var).png" width="32%" /> 
-  <img src="Charts_first_project/Hopt(var).png" width="32%" />
+  <img src="Mean_square_error_files/MSE(H).png" width="32%" />
+  <img src="Mean_square_error_files/MSE(var).png" width="32%" /> 
+  <img src="Mean_square_error_files/Hopt(var).png" width="32%" />
 </p>
 
 ### Wnioski
